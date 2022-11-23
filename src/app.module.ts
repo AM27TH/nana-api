@@ -7,7 +7,7 @@ import { ClientsModule } from './clients/clients.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      url: 'mysql://root:root@localhost:3306/banking-ddd-scratch',
+      url: 'mysql://root:root@localhost:3306/nana-ddd-scratch',
       migrationsRun: true,
       logging: true,
       timezone: '+00:00',

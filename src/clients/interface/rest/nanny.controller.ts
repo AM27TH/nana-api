@@ -7,8 +7,10 @@ import { ApiController } from 'src/shared/interface/rest/api.controller';
 import { RegisterNannyRequest } from 'src/clients/application/dtos/request/register-nanny-request.dto';
 import { RegisterNannyResponse } from 'src/clients/application/dtos/response/register-nanny-response.dto';
 import { GetNannyClients } from 'src/clients/application/messages/queries/get-nanny-clients.query';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @Controller('clients/nanny')
+@ApiTags('nanny clients')
 export class NannyController {
   constructor(
     private readonly nannyApplicationService: NannyApplicationService,
@@ -16,6 +18,7 @@ export class NannyController {
   ) {}
 
   @Post('')
+  @ApiOperation({ summary: 'Register Nanny Client' })
   async register(
     @Body() registerNannyRequest: RegisterNannyRequest,
     @Res({ passthrough: true }) response

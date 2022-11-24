@@ -43,7 +43,7 @@ export class NannyMapper {
 
   public static domainToEntity(nanny: Nanny): NannyEntity {
     const nannyEntity: NannyEntity = new NannyEntity();
-    NannyEntity.nannyName = NannyNameValue.from(nanny.getName().getValue());
+    nannyEntity.nannyName = NannyNameValue.from(nanny.getName().getValue());
     const createdAt: string = nanny.getAuditTrail() != null && nanny.getAuditTrail().getCreatedAt() != null ? nanny.getAuditTrail().getCreatedAt().format() : null;
     const createdBy: number = nanny.getAuditTrail() != null && nanny.getAuditTrail().getCreatedBy() != null ? nanny.getAuditTrail().getCreatedBy().getValue() : null;
     const updatedAt: string = nanny.getAuditTrail() != null && nanny.getAuditTrail().getUpdatedAt() != null ? nanny.getAuditTrail().getUpdatedAt().format() : null;

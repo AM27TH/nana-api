@@ -6,7 +6,7 @@ import { NannyName } from 'src/shared/domain/values/nanny-name.value';
 import { DateTime } from 'src/shared/domain/values/date-time.value';
 import { AuditTrailValue } from 'src/shared/infrastructure/persistence/values/audit-trail.value';
 import { NannyClientDto } from '../dtos/response/nanny-client.dto';
-import { RegisterNanny } from '../messages/commands/register-nanny.command';
+import { RegisterNanny } from '../handlers/commands/register-nanny.command';
 import { RegisterNannyRequest } from '../dtos/request/register-nanny-request.dto';
 import { RegisterNannyResponse } from '../dtos/response/register-nanny-response.dto';
 import { NannyEntity } from 'src/clients/infrastructure/persistence/entities/nanny.entity';

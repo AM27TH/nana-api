@@ -8,7 +8,7 @@ async function bootstrap() {
     .setTitle('Nana DDD API')
     .setDescription('Nana DDD API description')
     .setVersion('1.0')
-    .addTag('nana clients')
+    .addTag('nanny clients')
     .addTag('parent clients')
     .build();
   const document = SwaggerModule.createDocument(app, config);

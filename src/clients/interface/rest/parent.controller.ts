@@ -7,8 +7,10 @@ import { AppNotification } from 'src/shared/application/app.notification';
 import { RegisterParentResponse } from 'src/clients/application/dtos/response/register-parent-response.dto';
 import { ApiController } from 'src/shared/interface/rest/api.controller';
 import { GetParentClients } from 'src/clients/application/messages/queries/get-parent-clients.query';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @Controller('clients/parent')
+@ApiTags("parent clients")
 export class ParentController {
   constructor(
     private readonly parentApplicationService: ParentApplicationService,
@@ -16,6 +18,7 @@ export class ParentController {
   ) {}
 
   @Post('')
+  @ApiOperation({ summary: 'Register Parent Client' })
   async register(
     @Body() registerParentRequest: RegisterParentRequest,
     @Res({ passthrough: true }) response

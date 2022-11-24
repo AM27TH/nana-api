@@ -36,7 +36,7 @@ export class ParentMapper {
   }
   
   public static commandToDomain(command: RegisterParent, userId: number): Parent {
-    const personName: ParentName = ParentName.create(command.firstName, command.lastName);
+    const parentName: ParentName = ParentName.create(command.firstName, command.lastName);
     const dni: Dni = Dni.create(command.dni);
     const auditTrail: AuditTrail = AuditTrail.from(
       DateTime.utcNow(),
@@ -44,8 +44,8 @@ export class ParentMapper {
       null,
       null
     );
-    let person: Parent = ParentFactory.from(personName, dni, auditTrail);
-    return person;
+    let parent: Parent = ParentFactory.from(parentName, dni, auditTrail);
+    return parent;
   }
 
   public static domainToEntity(parent: Parent): ParentEntity {
@@ -61,23 +61,23 @@ export class ParentMapper {
     return parentEntity;
   }
 
-  public static entityToDomain(personEntity: PersonEntity): Person {
-    if (personEntity == null) return null;
-    const personName: PersonName = PersonName.create(personEntity.name.firstName, personEntity.name.lastName);
-    const dni: Dni = Dni.create(personEntity.dni.value);
+  public static entityToDomain(parentEntity: ParentEntity): Parent {
+    if (parentEntity == null) return null;
+    const parentName: ParentName = ParentName.create(parentEntity.name.firstName, parentEntity.name.lastName);
+    const dni: Dni = Dni.create(parentEntity.dni.value);
     const auditTrail: AuditTrail = AuditTrail.from(
-      personEntity.auditTrail.createdAt != null ? DateTime.fromString(personEntity.auditTrail.createdAt) : null,
-      personEntity.auditTrail.createdBy != null ? UserId.of(personEntity.auditTrail.createdBy) : null,
-      personEntity.auditTrail.updatedAt != null ? DateTime.fromString(personEntity.auditTrail.updatedAt) : null,
-      personEntity.auditTrail.updatedBy != null ? UserId.of(personEntity.auditTrail.updatedBy) : null
+      parentEntity.auditTrail.createdAt != null ? DateTime.fromString(parentEntity.auditTrail.createdAt) : null,
+      parentEntity.auditTrail.createdBy != null ? UserId.of(parentEntity.auditTrail.createdBy) : null,
+      parentEntity.auditTrail.updatedAt != null ? DateTime.fromString(parentEntity.auditTrail.updatedAt) : null,
+      parentEntity.auditTrail.updatedBy != null ? UserId.of(parentEntity.auditTrail.updatedBy) : null
     );
-    const clientId: ClientId = ClientId.of(personEntity.id);
-    let person: Person = PersonFactory.withId(clientId, personName, dni, auditTrail);
-    return person;
+    const clientId: ClientId = ClientId.of(parentEntity.id);
+    let parent: Parent = ParentFactory.withId(clientId, parentName, dni, auditTrail);
+    return parent;
   }
 
-  public static ormToPersonClientDto(row: any): PersonClientDto {
-    let dto = new PersonClientDto();
+  public static ormToParentClientDto(row: any): ParentClientDto {
+    let dto = new ParentClientDto();
     dto.id = Number(row.id);
     dto.firstName = row.firstName;
     dto.lastName = row.lastName;

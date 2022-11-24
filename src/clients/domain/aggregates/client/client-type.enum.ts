@@ -1,4 +1,4 @@
 export enum ClientType {
-    Nanny = 'N',
-    Parent = 'P'
+    NANNY = 'N',
+    PARENT = 'P'
   }

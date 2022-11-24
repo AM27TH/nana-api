@@ -17,5 +17,4 @@ export class NannyEntity extends ClientEntity {
 
   @Column((type) => AuditTrailValue, { prefix: false })
   auditTrail: AuditTrailValue;
-
 }

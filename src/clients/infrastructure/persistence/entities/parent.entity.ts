@@ -11,6 +11,4 @@ export class ParentEntity extends ClientEntity {
 
   @Column((type) => DniValue, { prefix: false })
   public dni: DniValue;
-  parentEntity: import("c:/Users/Nadia/OneDrive/Documentos/Visual Studio 2022/Templates/ProjectTemplates/TypeScript/nana-api/src/clients/infrastructure/persistence/values/parent-name.value").ParentNameValue;
-  auditTrail: import("c:/Users/Nadia/OneDrive/Documentos/Visual Studio 2022/Templates/ProjectTemplates/TypeScript/nana-api/src/shared/infrastructure/persistence/values/audit-trail.value").AuditTrailValue;
 }

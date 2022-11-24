@@ -13,11 +13,10 @@ import { NannyEntity } from 'src/clients/infrastructure/persistence/entities/nan
 import { NannyNameValue } from 'src/clients/infrastructure/persistence/values/nanny-name.value';
 import { UserId } from 'src/users/domain/aggregates/user/user-id.value';
 
-export class CompanyMapper {
+export class NannyMapper {
   public static dtoRequestToCommand(registerNannyRequest: RegisterNannyRequest): RegisterNanny {
     return new RegisterNanny(
         registerNannyRequest.name,
-        registerNannyRequest.ruc,
     );
   }
 
@@ -31,20 +30,20 @@ export class CompanyMapper {
   }
 
   public static commandToDomain(command: RegisterNanny, userId: number): Nanny {
-    const companyName: NannyName = NannyName.create(command.name);
+    const nannyName: NannyName = NannyName.create(command.name);
     const auditTrail: AuditTrail = AuditTrail.from(
       DateTime.utcNow(),
       UserId.of(userId),
       null,
       null
     );
-    let nanny: Nanny = NannyFactory.from(companyName, auditTrail);
+    let nanny: Nanny = NannyFactory.from(nannyName, auditTrail);
     return nanny;
   }
 
   public static domainToEntity(nanny: Nanny): NannyEntity {
     const nannyEntity: NannyEntity = new NannyEntity();
-    NannyEntity.companyName = NannyNameValue.from(nanny.getName().getValue());
+    NannyEntity.nannyName = NannyNameValue.from(nanny.getName().getValue());
     const createdAt: string = nanny.getAuditTrail() != null && nanny.getAuditTrail().getCreatedAt() != null ? nanny.getAuditTrail().getCreatedAt().format() : null;
     const createdBy: number = nanny.getAuditTrail() != null && nanny.getAuditTrail().getCreatedBy() != null ? nanny.getAuditTrail().getCreatedBy().getValue() : null;
     const updatedAt: string = nanny.getAuditTrail() != null && nanny.getAuditTrail().getUpdatedAt() != null ? nanny.getAuditTrail().getUpdatedAt().format() : null;
@@ -68,10 +67,10 @@ export class CompanyMapper {
     return nanny;
   }
 
-  public static ormToCompanyClientDto(row: any): NannyClientDto {
+  public static ormToNannyClientDto(row: any): NannyClientDto {
     let dto = new NannyClientDto();
     dto.id = Number(row.id);
-    dto.nannyName = row.nannyName;
+    dto.NannyName = row.nannyName;
     return dto;
   }
 }

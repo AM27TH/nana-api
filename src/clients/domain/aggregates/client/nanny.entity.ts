@@ -9,7 +9,7 @@ export class Nanny extends Client {
   private name: NannyName;
 
   public constructor(name: NannyName, auditTrail: AuditTrail) {
-    super(ClientType.Nanny, auditTrail);
+    super(ClientType.NANNY, auditTrail);
     this.name = name;
   }
 

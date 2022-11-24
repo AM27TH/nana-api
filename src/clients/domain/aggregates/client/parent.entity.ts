@@ -11,7 +11,7 @@ export class Parent extends Client {
   private dni: Dni;
 
   public constructor(name: ParentName, dni: Dni, auditTrail: AuditTrail) {
-    super(ClientType.Parent, auditTrail);
+    super(ClientType.PARENT, auditTrail);
     this.name = name;
     this.dni = dni;
   }

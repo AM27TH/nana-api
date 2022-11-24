@@ -8,6 +8,6 @@ export class ClientEntity {
   @PrimaryGeneratedColumn('increment', { type: 'bigint', name: 'id', unsigned: true })
   public id: number;
 
-  @Column({ name: 'type', type: 'enum', enum: ClientType, default: ClientType.Nanny })
+  @Column({ name: 'type', type: 'enum', enum: ClientType, default: ClientType.NANNY })
   readonly type: ClientType;
 }

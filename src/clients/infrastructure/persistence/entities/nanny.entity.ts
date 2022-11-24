@@ -13,7 +13,4 @@ export class NannyEntity extends ClientEntity {
   }
   @Column((type) => NannyNameValue, { prefix: false })
   public nannyName: NannyNameValue;
-  static nannyName: NannyNameValue;
-  auditTrail: import("c:/Users/Nadia/OneDrive/Documentos/Visual Studio 2022/Templates/ProjectTemplates/TypeScript/nana-api/src/shared/infrastructure/persistence/values/audit-trail.value").AuditTrailValue;
-
 }

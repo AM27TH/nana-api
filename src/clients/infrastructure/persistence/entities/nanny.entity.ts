@@ -1,3 +1,4 @@
+import { AuditTrailValue } from 'src/shared/infrastructure/persistence/values/audit-trail.value';
 import { ClientId } from 'src/clients/domain/aggregates/client/client-id.value';
 import { ClientType } from 'src/clients/domain/aggregates/client/client-type.enum';
 import { AuditTrail } from 'src/shared/domain/values/audit-trail.value';
@@ -12,8 +13,9 @@ export class NannyEntity extends ClientEntity {
     throw new Error('Method not implemented.');
   }
   @Column((type) => NannyNameValue, { prefix: false })
-  public nannyName: NannyNameValue;
   static nannyName: NannyNameValue;
-  auditTrail: import("c:/Users/Nadia/OneDrive/Documentos/Visual Studio 2022/Templates/ProjectTemplates/TypeScript/nana-api/src/shared/infrastructure/persistence/values/audit-trail.value").AuditTrailValue;
+
+  @Column((type) => AuditTrailValue, { prefix: false })
+  auditTrail: AuditTrailValue;
 
 }

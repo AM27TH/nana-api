@@ -3,12 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { ClientsModule } from './clients/clients.module';
 import { UsersModule } from './users/users.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      url: 'mysql://root:root@localhost:3306/nana-ddd-scratch',
+      url: 'mysql://root:97854281@localhost:3306/nana-ddd-scratch',
       migrationsRun: true,
       logging: true,
       timezone: '+00:00',
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module';
     }),
     ClientsModule,
     UsersModule,
+    NotificationsModule,
   ],
   controllers: [AppController],
   providers: [],

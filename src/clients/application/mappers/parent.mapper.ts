@@ -1,6 +1,6 @@
 import { Parent } from 'src/clients/domain/aggregates/client/parent.entity';
 import { AuditTrailValue } from 'src/shared/infrastructure/persistence/values/audit-trail.value';
-import { RegisterParent } from '../messages/commands/register-parent.command';
+import { RegisterParent } from '../handlers/commands/register-parent.command';
 import { ParentName } from 'src/shared/domain/values/parent-name.value';
 import { Dni } from 'src/shared/domain/values/dni.value';
 import { AuditTrail } from 'src/shared/domain/values/audit-trail.value';

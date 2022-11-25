@@ -43,7 +43,7 @@ export class NannyMapper {
 
   public static domainToEntity(nanny: Nanny): NannyEntity {
     const nannyEntity: NannyEntity = new NannyEntity();
-    nannyEntity.nannyName = NannyNameValue.from(nanny.getName().getValue());
+    NannyEntity.nannyName = NannyNameValue.from(nanny.getName().getValue());
     const createdAt: string = nanny.getAuditTrail() != null && nanny.getAuditTrail().getCreatedAt() != null ? nanny.getAuditTrail().getCreatedAt().format() : null;
     const createdBy: number = nanny.getAuditTrail() != null && nanny.getAuditTrail().getCreatedBy() != null ? nanny.getAuditTrail().getCreatedBy().getValue() : null;
     const updatedAt: string = nanny.getAuditTrail() != null && nanny.getAuditTrail().getUpdatedAt() != null ? nanny.getAuditTrail().getUpdatedAt().format() : null;
@@ -55,7 +55,7 @@ export class NannyMapper {
 
   public static entityToDomain(nannyEntity: NannyEntity): Nanny {
     if (NannyEntity == null) return null;
-    const nannyName: NannyName = NannyName.create(nannyEntity.nannyName.value);
+    const nannyName: NannyName = NannyName.create(NannyEntity.nannyName.value);
     const auditTrail: AuditTrail = AuditTrail.from(
         nannyEntity.auditTrail.createdAt != null ? DateTime.fromString(nannyEntity.auditTrail.createdAt) : null,
         nannyEntity.auditTrail.createdBy != null ? UserId.of(nannyEntity.auditTrail.createdBy) : null,

@@ -12,6 +12,9 @@ export class NannyEntity extends ClientEntity {
   static withId(clientId: ClientId, nannyName: NannyName, auditTrail: AuditTrail): import("../../../domain/aggregates/client/nanny.entity").Nanny {
     throw new Error('Method not implemented.');
   }
+  public withId(clientId: ClientId, nannyName: NannyName, auditTrail: AuditTrail): import("../../../domain/aggregates/client/nanny.entity").Nanny {
+    throw new Error('Method not implemented.');
+  }
   @Column((type) => NannyNameValue, { prefix: false })
   static nannyName: NannyNameValue;
 

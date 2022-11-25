@@ -18,7 +18,7 @@ export class NannyController {
   ) {}
 
   @Post('')
-  @ApiOperation({ summary: 'Register Nanny Client' })
+  @ApiOperation({ summary: 'Register Nanny in Nana' })
   async register(
     @Body() registerNannyRequest: RegisterNannyRequest,
     @Res({ passthrough: true }) response
@@ -35,6 +35,7 @@ export class NannyController {
   }
 
   @Get('')
+  @ApiOperation({ summary: 'Get all Nanny of Nana' })
   async getAll(@Res({ passthrough: true }) response): Promise<object> {
     try {
       const customers = await this.queryBus.execute(new GetNannyClients());
@@ -45,6 +46,7 @@ export class NannyController {
   }
 
   @Get('/:id')
+  @ApiOperation({ summary: 'Get nanny Id' })
   async getById(@Param('id') id: number, @Res({ passthrough: true }) response): Promise<object> {
     try {
       const parent = await this.nannyApplicationService.getById(id);

@@ -18,7 +18,7 @@ export class ParentController {
   ) {}
 
   @Post('')
-  @ApiOperation({ summary: 'Register Parent Client' })
+  @ApiOperation({ summary: 'Register Parent in Nana' })
   async register(
     @Body() registerParentRequest: RegisterParentRequest,
     @Res({ passthrough: true }) response
@@ -35,6 +35,7 @@ export class ParentController {
   }
 
   @Get('')
+  @ApiOperation({ summary: 'Get all Parents of Nana' })
   async getAll(@Res({ passthrough: true }) response): Promise<object> {
     try {
       const customers = await this.queryBus.execute(new GetParentClients());
@@ -45,6 +46,7 @@ export class ParentController {
   }
 
   @Get('/:id')
+  @ApiOperation({ summary: 'Get parent Id' })
   async getById(@Param('id') id: number, @Res({ passthrough: true }) response): Promise<object> {
     try {
       const parent = await this.parentApplicationService.getById(id);
